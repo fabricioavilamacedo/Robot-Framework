@@ -27,8 +27,8 @@ Desafio Técnico utilizando Robot Framework incluindo automação Frontend e de 
 ├─ ├─resource/                              # Diretório onde ficam os arquivos de resource do robotframework
 ├─ ├─test/                                  # Scripts de testes API e Frontend
 ├─────────├─API/                            # Scripts de testes de API
-├──────────────├─Results/                   # Diretório onde ficam armazenagos as evidências e log de execução dos testes
+├──────────────├─Results/                   # Diretório onde ficam armazenados as evidências e log de execução dos testes
 ├─────────├─FrontEnd/                       # Scripts de testes de Frotnend
-├──────────────├─Results/                   # Diretório onde ficam armazenagos as evidências e log de execução dos testes
+├──────────────├─Results/                   # Diretório onde ficam armazenados as evidências e log de execução dos testes
 └─ README.md                                # Esse arquivo
 ```
