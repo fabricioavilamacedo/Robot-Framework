@@ -28,7 +28,7 @@ Desafio Técnico utilizando Robot Framework incluindo automação Frontend e de 
 ├─ ├─test/                                  # Scripts de testes API e Frontend
 ├─────────├─API/                            # Scripts de testes de API
 ├──────────────├─Results/                   # Diretório onde ficam armazenados as evidências e log de execução dos testes
-├─────────├─FrontEnd/                       # Scripts de testes de Frotnend
+├─────────├─FrontEnd/                       # Scripts de testes de Frotend
 ├──────────────├─Results/                   # Diretório onde ficam armazenados as evidências e log de execução dos testes
 └─ README.md                                # Esse arquivo
 ```
