@@ -1,4 +1,4 @@
-# Desafio Tecnico - Frontend e API - BANCO ABC
+# Frontend e API com Robot Framework
 
 ## Descrição
 Desafio Técnico utilizando Robot Framework incluindo automação Frontend e de API
