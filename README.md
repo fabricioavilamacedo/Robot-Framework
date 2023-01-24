@@ -1,34 +1,29 @@
-# Frontend e API com Robot Framework
+# Frontend com Robot Framework
 
 ## Descrição
-Desafio Técnico utilizando Robot Framework incluindo automação Frontend e de API
+Desafio Técnico utilizando Robot Framework incluindo automação Frontend.
 
 ## Instruções
 1. Baixe e instale o Python: [https://www.python.org/downloads/]
 
 2. Clone o repositório: `git clone git@github.com:fabricioavilamacedo/Robot-Framework.git` (SSH) or `git clone https://github.com/fabricioavilamacedo/Robot-Framework.git` (HTTPS) no editor ou IDE de sua preferência
 
-3. No diretório raiz do projeto rode os comandos `pip install robotframework`, `pip install --upgrade robotframework-seleniumlibrary`, `pip install robotframework-faker` e `pip install robotframework-requests`para instalação do framework e suas respectivas libraries
+3. No diretório raiz do projeto rode os comandos `pip install robotframework`, `pip install --upgrade robotframework-seleniumlibrary` e `pip install robotframework-faker` para instalação do framework e suas respectivas libraries
 
-4. Na pasta 'FrontEnd' já contém o arquivo chromedriver para execução dos testes no navegador Chrome, caso ocorra algum erro na execução dos testes frontend, confira se a versão do arquivo é compatível com a versão de seu navegador Chrome.
+4. Baixe o arquivo chromedriver no site `https://chromedriver.chromium.org/downloads` e recomendo que coloque na pasta scripts do local onde foi instalado o Python para execução dos testes no navegador Chrome, caso ocorra algum erro na execução dos testes frontend, confira se a versão do arquivo é compatível com a versão de seu navegador Chrome.
 
 5. Para execução dos testes, nas respectivas pastas do mesmo, rode os comandos abaixo:
 
--> robot -d Results .\frontEndTest.robot   : Para execução de todos os cenários de testes frontend
--> robot -d Results -i [TAG] .\frontEndTest.robot  : Para execução de uma TAG específica de frontend
+-> robot -d Results .\desafio-tecnico-robotframework\tests\frontEndTest.robot   : Para execução de todos os cenários de testes
+-> robot -d Results -i [TAG] .\desafio-tecnico-robotframework\tests\frontEndTest.robot  : Para execução de uma TAG específica
 
--> robot -d Results .\ApiTest.robot        : Para execução de todos os cenários de testes de API
--> robot -d Results -i [TAG] .\ApiTest.robot  : Para execução de uma TAG específica de API
 
 ## Estrutura de diretórios
 ```
 /
 ├─ desafio-tecnico-robotframework/          # Raiz do projeto onde se encontram os demais diretórios e testes
 ├─ ├─resource/                              # Diretório onde ficam os arquivos de resource do robotframework
-├─ ├─test/                                  # Scripts de testes API e Frontend
-├─────────├─API/                            # Scripts de testes de API
-├──────────────├─Results/                   # Diretório onde ficam armazenados as evidências e log de execução dos testes
-├─────────├─FrontEnd/                       # Scripts de testes de Frotend
+├─ ├─test/                                  # Scripts de testes
 ├──────────────├─Results/                   # Diretório onde ficam armazenados as evidências e log de execução dos testes
 └─ README.md                                # Esse arquivo
 ```

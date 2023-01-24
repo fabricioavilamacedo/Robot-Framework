@@ -4,95 +4,93 @@ Library     FakerLibrary
 
 
 *** Variables ***
-${URL}                      http://automationpractice.com/index.php?controller=authentication
-${Browser}                  chrome
-${imgNewExperience}         xpath=//*[@id="header_logo"]/a/img
-${campoEmailValido}         id=email_create    
-${btnCreateAccount}         //*[@id="SubmitCreate"]/span/i
-${campoFirstName}           id=customer_firstname
-${campoLastName}            id=customer_lastname
-${campoEmail}               id=email
-${campoPassword}            id=passwd
-${campoObrigatorioX}        xpath=//*[@id="account-creation_form"]/div[1]/div[2]
-${campoAdress}              id=address1
-${stringAdress}             Casa
-${campoCity}                id=city
-${campoZipCode}             id=postcode
-${campoMobilePhone}         id=phone_mobile
-${campoReference}           id=alias
-${campoState}               id=id_state
-${selecaoState}             xpath=//*[@id="id_state"]/option[2]
-${campoCountry}             id=id_country
-${selecaoCountry}           id=uniform-id_country
-${btnRegister}              id=submitAccount
-${msgPage}                  xpath=//*[@id="center_column"]/h1
-${intMobilePhone}                        11954458877                           #Numero adicionado pois faker estava gerando números inconsistentes
+${URLCREATE}                     https://courses.ultimateqa.com/users/sign_up
+${URLSIGN}                       https://courses.ultimateqa.com/users/sign_in
+${Browser}                       chrome
+${campoFirstName}                id=user[first_name]
+${campoLastName}                 id=user[last_name]   
+${campoEmail}                    id=user[email]
+${campoPassword}                 id=user[password]
+${email}                         teste12345@hotmail.com
+${password}                      @Teste123
+${checkTermos}                   id=user[terms]
+${btnSignup}                     css=button.button.button-primary.g-recaptcha
+${logoQa}                        xpath=/html/body/header/div[2]/div/section/a/img
+${stringProdutos}                xpath=//*[@id="main-content"]/div/h2
+${msgEmail}                      xpath=//*[@id="notice"]/ul/li[2]
+${msgPage}                       xpath=//*[@id="main-content"]/div/h2
+${msgLogin}                      xpath=//*[@id="notifications"]/div/div/div/p
 
 *** Keywords ***
-
-#TC-01   Validar os campos obrigatorios do formulario com sucesso
-Start Session
-  Open Browser          url=${URL}  browser=${Browser}
-  Set Window Size                      1600    1900
-  Maximize Browser Window	  
 
 End Session
   Capture Page Screenshot
   Close Browser
+#TC-01   Criar um usuário com sucesso
+Dado que eu esteja na tela criação de usuário
+  Open Browser                             url=${URLCREATE}  browser=${Browser}
+  Set Window Size                          1600    1900
+  Maximize Browser Window	  
+  Wait Until Element Is Visible            locator=${logoQa}
+  Page Should Contain Element              ${logoQa}
 
-Dado que eu esteja no site Automation Practice
-  Wait Until Element Is Visible            locator=${imgNewExperience}
-  Page Should Contain Element              ${imgNewExperience}
-
-Quando informar o e-mail "${emailValido}"
-  Wait Until Element Is Visible            locator=${campoEmailValido}
-  Input Text                               ${campoEmailValido}  ${emailValido}
-
-E clilcar em criar uma conta
-  Click Element                           ${btnCreateAccount}
-
-Então validarei se os campos do formulário são de preenchimento obrigatório
+Quando preencher os campos do formulário
+  ${firstName}                             FakerLibrary.firstName
+  ${lastName}                              FakerLibrary.lastName
   Wait Until Element Is Visible            locator=${campoFirstName}
-  Click Element                            ${campoFirstName}
-  Page Should Contain Element              ${campoObrigatorioX}
-  Click Element                            ${campoLastName}
-  Page Should Contain Element              ${campoObrigatorioX}
-  Click Element                            ${campoPassword} 
-  Page Should Contain Element              ${campoObrigatorioX}
- 
-#TC-02   Realizar um cadastro com os campos obrigatórios preenchidos com sucesso
-Dado que eu esteja na tela de cadastro
-  ${emailValidoFaker}                      FakerLibrary.Email
-  Wait Until Element Is Visible            locator=${campoEmailValido}
-  Input Text                               ${campoEmailValido}        ${emailValidoFaker}
-  Click Element                            ${btnCreateAccount}
+  Input Text                               ${campoFirstName}  ${firstName}
+  Input Text                               ${campoLastName}   ${lastName}
+  Input Text                               ${campoEmail}      ${email}
+  Input Text                               ${campoPassword}   ${password}
+  
+E clicar em sign up
+  Click Element                           ${checkTermos}
+  Click Element                           ${btnSignup}
 
-Quando preencher os campos obrigatórios
-  ${stringName}                            FakerLibrary.Name
-  ${stringLastName}                        FakerLibrary.LastName
-  ${stringSenha}                           FakerLibrary.Password
-  ${emailValido2}                          FakerLibrary.Email
-  ${stringCity}                            FakerLibrary.City
-  ${intZipCode}                            FakerLibrary.Zipcode
-  Sleep                                    10                                    #Coloquei essa pausa por conta de instalibidade no site
+Então terei o usuário criado com sucesso
+  Wait Until Element Is Visible            locator=${stringProdutos}
+  Page Should Contain Element              ${stringProdutos}
+
+
+
+#TC-02   Validar os campos do formulário com sucesso
+Quando preencher os campos do formulário com dados já cadastrados
+  ${firstName}                             FakerLibrary.firstName
+  ${lastName}                              FakerLibrary.lastName
   Wait Until Element Is Visible            locator=${campoFirstName}
-  Input Text                               ${campoFirstName}          ${stringName}
-  Input Text                               ${campoLastName}           ${stringLastName}
-  Input Text                               ${campoPassword}           ${stringSenha}
-  Input Text                               ${campoAdress}             ${stringAdress}
-  Input Text                               ${campoCity}               ${stringCity}
-  Click Element                            ${campoState}   
-  Wait Until Element Is Visible            locator=${selecaoState}   
-  Click Element                            ${selecaoState}   
-  Input Text                               ${campoZipCode}            ${intZipCode} 
-  Click Element                            ${campoCountry}
-  Wait Until Element Is Visible            locator=${selecaoCountry}
-  Click Element                            ${selecaoCountry}
-  Input Text                               ${campoMobilePhone}        ${intMobilePhone} 
+  Input Text                               ${campoFirstName}  ${firstName}
+  Input Text                               ${campoLastName}   ${lastName}
+  Input Text                               ${campoEmail}      ${email}
+  Input Text                               ${campoPassword}   ${password}
+  Click Element                           ${btnSignup}
 
-E clicar em regitrar
-  Click Element                            ${btnRegister}
+Então receberei a mensagem de dados existentes
+  Wait Until Element Is Visible            locator=${msgEmail}
+  Page Should Contain Element              ${msgEmail}
 
-Então terei um cadastro efetuado com sucesso
+
+
+
+#TC-03   Realizar um login com sucesso
+Dado que eu esteja na tela de login
+  Open Browser                             url=${URLSIGN}            browser=${Browser}
+  Set Window Size                          1600    1900
+  Maximize Browser Window	  
+
+Quando informar os dados para acesso
+  Input Text                               ${campoEmail}             ${email}
+  Input Text                               ${campoPassword}          ${password}
+
+Então serei direcionado a tela inicial com sucesso
+  Click Element                           ${btnSignup}
   Wait Until Element Is Visible            locator=${msgPage}
   Page Should Contain Element              ${msgPage}
+
+
+#TC-04   Validar os campos de login com sucesso
+Quando clicar em sign in sem preencher nenhum campo
+  Click Element                           ${btnSignup}
+
+Então visualizarei a mensagem de email e senha inválidos
+  Wait Until Element Is Visible            locator=${msgLogin}
+  Page Should Contain Element              ${msgLogin}
