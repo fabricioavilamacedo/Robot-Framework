@@ -1,8 +1,8 @@
 *** Settings ***
-Library     SeleniumLibrary
-Library     FakerLibrary
+Library     SeleniumLibrary  #import da lib
+Library     FakerLibrary     #import da lib
 
-
+# Variáveis utilizadas 
 *** Variables ***
 ${URLCREATE}                     https://courses.ultimateqa.com/users/sign_up
 ${URLSIGN}                       https://courses.ultimateqa.com/users/sign_in
@@ -23,9 +23,11 @@ ${msgLogin}                      xpath=//*[@id="notifications"]/div/div/div/p
 
 *** Keywords ***
 
+# Executa essa keyword após a finalização de cada teste
 End Session
   Capture Page Screenshot
   Close Browser
+
 #TC-01   Criar um usuário com sucesso
 Dado que eu esteja na tela criação de usuário
   Open Browser                             url=${URLCREATE}  browser=${Browser}
@@ -52,7 +54,6 @@ Então terei o usuário criado com sucesso
   Page Should Contain Element              ${stringProdutos}
 
 
-
 #TC-02   Validar os campos do formulário com sucesso
 Quando preencher os campos do formulário com dados já cadastrados
   ${firstName}                             FakerLibrary.firstName
@@ -67,8 +68,6 @@ Quando preencher os campos do formulário com dados já cadastrados
 Então receberei a mensagem de dados existentes
   Wait Until Element Is Visible            locator=${msgEmail}
   Page Should Contain Element              ${msgEmail}
-
-
 
 
 #TC-03   Realizar um login com sucesso

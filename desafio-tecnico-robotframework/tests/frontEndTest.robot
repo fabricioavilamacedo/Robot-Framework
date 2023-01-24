@@ -1,7 +1,7 @@
 *** Settings ***
-Resource         ../resource/frontEndTestResource.robot
-#Test Setup       Start Session
-Test Teardown    End Session
+Resource         ../resource/frontEndTestResource.robot  #importe dos resources do projeto
+#Test Setup       Start Session  #hooks
+Test Teardown    End Session   #hooks
 
 *** Test Cases *** 
 Criar um usuário com sucesso
