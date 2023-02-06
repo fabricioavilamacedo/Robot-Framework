@@ -4,33 +4,19 @@ Resource         ../resource/frontEndTestResource.robot  #importe dos resources 
 Test Teardown    End Session   #hooks
 
 *** Test Cases *** 
-Criar um usuário com sucesso
-    [Documentation]                                         Esse teste realiza a criação de um usuário na plataforma courses
+Realizar uma busca com sucesso
+    [Documentation]                                         Esse teste realiza uma busca na plataforma Agi com sucesso
     [Tags]                                                  TC-01 
-    Dado que eu esteja na tela criação de usuário
-    Quando preencher os campos do formulário
-    E clicar em sign up
-    Então terei o usuário criado com sucesso
+    Dado que eu esteja no blog do Agi
+    Quando digitar uma pesquisa no campo de pesquisar
+    E clicar no notão pesquisar
+    Então terei a busca realizada com sucesso
 
-Tentar realizar o cadastro de um usuário existente com sucesso
-    [Documentation]                                         Esse teste realiza a validação da tentativa de criação de um usuário já existente em banco de dados
+Realizar uma busca de um texto inválido
+    [Documentation]                                         Esse teste realiza uma busca de um elemento inválido na plataforma Agi com sucesso
     [Tags]                                                  TC-02 
-    Dado que eu esteja na tela criação de usuário
-    Quando preencher os campos do formulário com dados já cadastrados
-    Então receberei a mensagem de dados existentes
-
-Realizar um login com sucesso
-    [Documentation]                                         Esse teste realiza um login na plataforma courses
-    [Tags]                                                  TC-03
-    Dado que eu esteja na tela de login
-    Quando informar os dados para acesso
-    Então serei direcionado a tela inicial com sucesso
-
-Validar os campos de login com sucesso
-    [Documentation]                                         Esse teste realiza a validação dos campos de login obrigatório do formulário
-    [Tags]                                                  TC-04
-    Dado que eu esteja na tela de login
-    Quando clicar em sign in sem preencher nenhum campo
-    Então visualizarei a mensagem de email e senha inválidos
-
+    Dado que eu esteja no blog do Agi
+    Quando digitar uma pesquisa inválida no campo de pesquisar
+    E clicar no notão pesquisar
+    Então terei a mensagem de Nenhum resultado exibida
    

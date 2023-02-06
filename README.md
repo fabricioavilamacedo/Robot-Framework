@@ -1,7 +1,7 @@
 # Frontend com Robot Framework
 
 ## Descrição
-Desafio Técnico utilizando Robot Framework incluindo automação Frontend.
+Desafio Técnico utilizando Robot Framework - automação Frontend.
 
 ## Instruções
 1. Baixe e instale o Python: [https://www.python.org/downloads/]
@@ -10,7 +10,7 @@ Desafio Técnico utilizando Robot Framework incluindo automação Frontend.
 
 3. No diretório raiz do projeto rode os comandos `pip install robotframework`, `pip install --upgrade robotframework-seleniumlibrary` e `pip install robotframework-faker` para instalação do framework e suas respectivas libraries
 
-4. Baixe o arquivo chromedriver no site `https://chromedriver.chromium.org/downloads` e recomendo que coloque na pasta scripts do local onde foi instalado o Python para execução dos testes no navegador Chrome, caso ocorra algum erro na execução dos testes frontend, confira se a versão do arquivo é compatível com a versão de seu navegador Chrome.
+4. Baixe o arquivo chromedriver no site `https://chromedriver.chromium.org/downloads` e recomendo que coloque na pasta scripts, dentro do local onde foi instalado o Python para execução dos testes no navegador Chrome, caso ocorra algum erro na execução dos testes frontend, confira se a versão do arquivo é compatível com a versão de seu navegador Chrome.
 
 5. Para execução dos testes, nas respectivas pastas do mesmo, rode os comandos abaixo:
 
